@@ -16,6 +16,7 @@ function MyApp() {
     axios
       .get(apiUrl)
       .then((response) => {
+        console.log("Data fetched:", response.data);
         setData(response.data);
         setLoading(false);
       })
