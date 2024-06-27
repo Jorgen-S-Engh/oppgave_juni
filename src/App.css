@@ -1,0 +1,47 @@
+
+
+.main-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  
+}
+
+/* .city-container {
+  border: 1px solid gray;
+  display: flex;
+  width: 200px;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  transition: box-shadow 0.3s ease;
+  background-color: aliceblue;
+} */
+
+.city-item:hover {
+  box-shadow: 0 5px 10px 0px lightblue;
+}
+
+.city-container{
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+}
+
+.city-item{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  width: 200px;
+  border: solid 1px gray;
+  padding: 10px
+
+}
+
+
+
