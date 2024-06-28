@@ -5,6 +5,10 @@ import { BsGraphUpArrow, BsGraphDownArrow } from "react-icons/bs";
 import KrsImg from "../public/kristiansand.jpg";
 import BergenImg from "../public/bergen.jpg";
 import NorgeImg from "../public/norge.jpg";
+import TromsoImg from "../public/tromso.jpg";
+import TrondheimImg from "../public/trondheim.jpg";
+import StavangerImg from "../public/stavanger.jpg";
+import OsloImg from "../public/oslo.jpg";
 
 function MyApp() {
   const [selectedCity, setSelectedCity] = useState("Norge");
@@ -46,6 +50,14 @@ function MyApp() {
         return BergenImg;
       case "Kristiansand m/omegn":
         return KrsImg;
+      case "Tromsø":
+        return TromsoImg;
+      case "Trondheim":
+        return TrondheimImg;
+      case "Stavanger m/omegn":
+        return StavangerImg;
+      case "Oslo":
+        return OsloImg;
       default:
         return NorgeImg;
     }
@@ -70,34 +82,36 @@ function MyApp() {
       <div className="city-headline-container">
         <h2>{selectedCity}</h2>
       </div>
-      {selectedCity && (
-        <div
-          className="city-info__container"
-          style={{
-            backgroundImage: bgImgSrc ? `url(${bgImgSrc})` : "none",
-          }}
-        >
-          {Object.entries(jsonData[selectedCity]).map(([key, value]) => (
-            <div key={key} className="city-info__unit">
-              <div>
-                <p>
-                  {key} : {value}
-                </p>
-                {selectedCity !== "Norge"
-                  ? `Norge: ${jsonData["Norge"][key]}`
-                  : null}
+      <div className="parent">
+        {selectedCity && (
+          <div
+            className="city-info__container"
+            style={{
+              backgroundImage: bgImgSrc ? `url(${bgImgSrc})` : "none",
+            }}
+          >
+            {Object.entries(jsonData[selectedCity]).map(([key, value]) => (
+              <div key={key} className="city-info__unit">
+                <div>
+                  <p>
+                    {key} : {value}
+                  </p>
+                  {selectedCity !== "Norge"
+                    ? `Norge: ${jsonData["Norge"][key]}`
+                    : null}
+                </div>
+                <div>
+                  {parseFloat(value) >= 0 ? (
+                    <BsGraphUpArrow className="up-arrow icon" />
+                  ) : (
+                    <BsGraphDownArrow className="down-arrow icon" />
+                  )}
+                </div>
               </div>
-              <div>
-                {parseFloat(value) >= 0 ? (
-                  <BsGraphUpArrow className="up-arrow icon" />
-                ) : (
-                  <BsGraphDownArrow className="down-arrow icon" />
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 }
