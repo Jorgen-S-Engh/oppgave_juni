@@ -10,7 +10,7 @@
 
 //   useEffect(() => {
 //     axios
-//       .get("/boligstatistikk.json")
+//       .get("/api/static/boligprisstatistikk.json")
 //       .then((response) => {
 //         setData(response.data);
 //         setLoading(false);

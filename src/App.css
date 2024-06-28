@@ -1,12 +1,27 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300');
+
+
 body{
-  background-color: #2c3e50;
-  color: #ecf0f1
+  /* background-color: #2c3e50;
+  color: #ecf0f1; */
+  font-family: 'Comfortaa', sans-serif;
+  display:flex;
+  justify-content: center;
+  margin: 0px;
 }
+.content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 
 .main-content {
   display: flex;
   flex-wrap: wrap;
   gap: 25px;
+
   
 }
 
@@ -23,7 +38,7 @@ body{
 } */
 
 .city-item:hover {
-  box-shadow: 0 5px 10px 0px lightblue;
+  box-shadow: 0px 0px 5px 0px rgb(202, 205, 205);
 }
 
 .city-container{
@@ -33,18 +48,87 @@ body{
   align-items: center;
   flex-wrap: wrap;
 
+
 }
 
 .city-item{
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100px;
+
   width: 200px;
-  border: solid 1px gray;
-  padding: 10px
+  border: solid 1px rgb(199, 199, 199);
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
 
 }
 
+.city-info__container{
+  display: flex;
+  height: 500px;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  padding: 20px;
+  color: white;
+  transition: background-image 0.5s ease-in-out;
+
+}
+
+.city-info__unit{
+  width: 300px;
+  height: 100px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* box-shadow: 0px 0px 5px 0px rgb(202, 205, 205); */
+  border: solid 1px rgb(186, 186, 186);
+  font-weight: bold;
+}
+
+.icon{
+  font-size: 2rem;
+  margin-left: 20px;
+
+}
+
+
+.up-arrow{
+  color: rgba(0, 226, 71, 0.8);
+
+}
+
+.down-arrow{
+  color: rgba(226, 0, 0, 0.8);
+}
+
+
+.city-info__container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(80, 80, 80, 0.5); 
+  backdrop-filter: blur(3px); 
+  z-index: 1;
+}
+
+.city-info__unit {
+  position: relative;
+  z-index: 2; 
+  background: rgba(255, 255, 255, 0.846); 
+  color: black;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+}
 
 
