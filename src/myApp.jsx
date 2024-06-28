@@ -9,10 +9,11 @@ import NorgeImg from "../public/norge.jpg";
 function MyApp() {
   const [selectedCity, setSelectedCity] = useState("Norge");
 
+  //---------Lar denne stå for å vise hvordan jeg ville ha hentet data fra apiet hvis det ikke hadde resultert i CORS feil.
+
   //   const [data, setData] = useState({});
   //   const [loading, setLoading] = useState(true);
   //   const [error, setError] = useState(null);
-  //   const [selectedCity, setSelectedCity] = useState("");
 
   //   useEffect(() => {
   //     axios
