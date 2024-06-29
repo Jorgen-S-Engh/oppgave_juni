@@ -1,70 +1,118 @@
-// import "./App.css";
-// import React, { useState, useEffect } from "react";
-// import axios from "axios";
+import "./App.css";
+import React, { useState } from "react";
+import jsonData from "./boligprisstatistikk.json";
+import { BsGraphUpArrow, BsGraphDownArrow } from "react-icons/bs";
+import KrsImg from "/kristiansand.jpg";
+import BergenImg from "/bergen.jpg";
+import NorgeImg from "/norge.jpg";
+import TromsoImg from "/tromso.jpg";
+import TrondheimImg from "/trondheim.jpg";
+import StavangerImg from "/stavanger.jpg";
+import OsloImg from "/oslo.jpg";
 
-// function App() {
-//   const [data, setData] = useState({});
-//   const [loading, setLoading] = useState(true);
-//   const [error, setError] = useState(null);
-//   const [selectedCity, setSelectedCity] = useState("");
+function MyApp() {
+  const [selectedCity, setSelectedCity] = useState("Norge");
 
-//   useEffect(() => {
-//     axios
-//       .get("/api/static/boligprisstatistikk.json")
-//       .then((response) => {
-//         setData(response.data);
-//         setLoading(false);
-//       })
-//       .catch((error) => {
-//         setError("Error loading data");
-//         setLoading(false);
-//       });
-//   }, []);
+  //---------Lar denne stå for å vise hvordan jeg ville ha hentet data fra apiet hvis det ikke hadde resultert i CORS feil.
 
-//   if (loading) {
-//     return <h1>Loading...</h1>;
-//   }
+  //   const [data, setData] = useState({});
+  //   const [loading, setLoading] = useState(true);
+  //   const [error, setError] = useState(null);
 
-//   if (error) {
-//     return <h1>{error}</h1>;
-//   }
+  //   useEffect(() => {
+  //     axios
+  //       .get("/api/static/boligprisstatistikk.json")
+  //       .then((response) => {
+  //         setData(response.data);
+  //         setLoading(false);
+  //       })
+  //       .catch((error) => {
+  //         setError("Error loading data");
+  //         setLoading(false);
+  //       });
+  //   }, []);
 
-//   const handleCityClick = (city) => {
-//     setSelectedCity(city);
-//   };
+  //   if (loading) {
+  //     return <h1>Loading...</h1>;
+  //   }
 
-//   const backgroundImage = selectedCity
-//     ? `url('/${selectedCity.toLowerCase()}.jpg')`
-//     : "none";
+  //   if (error) {
+  //     return <h1>{error}</h1>;
+  //   }
 
-//   return (
-//     <div>
-//       <h1>Boligpris Statistikk {selectedCity}</h1>
-//       <div className="main-content">
-//         {Object.keys(data).map((city) => (
-//           <div
-//             className="city-container"
-//             key={city}
-//             onClick={() => handleCityClick(city)}
-//           >
-//             <h4>{city}</h4>
-//           </div>
-//         ))}
-//       </div>
-//       {selectedCity && (
-//         <div className="city-info">
-//           <h2>{selectedCity}</h2>
-//           <ul>
-//             {Object.entries(data[selectedCity]).map(([key, value]) => (
-//               <li key={key}>
-//                 {key}: {value}
-//               </li>
-//             ))}
-//           </ul>
-//         </div>
-//       )}
-//     </div>
-//   );
-// }
+  const handleCityClick = (city) => {
+    setSelectedCity(city);
+  };
 
-// export default App;
+  const getBackgroundImage = (city) => {
+    switch (city) {
+      case "Bergen":
+        return BergenImg;
+      case "Kristiansand m/omegn":
+        return KrsImg;
+      case "Tromsø":
+        return TromsoImg;
+      case "Trondheim":
+        return TrondheimImg;
+      case "Stavanger m/omegn":
+        return StavangerImg;
+      case "Oslo":
+        return OsloImg;
+      default:
+        return NorgeImg;
+    }
+  };
+
+  const bgImgSrc = getBackgroundImage(selectedCity);
+
+  return (
+    <div className="content">
+      <h1>Boligprisstatistikk</h1>
+      <div className="city-container">
+        {Object.keys(jsonData).map((city) => (
+          <div
+            key={city}
+            className="city-item"
+            onClick={() => handleCityClick(city)}
+          >
+            {city}
+          </div>
+        ))}
+      </div>
+      <div className="city-headline-container">
+        <h2>{selectedCity}</h2>
+      </div>
+
+      {selectedCity && (
+        <div
+          className="city-info__container"
+          style={{
+            backgroundImage: `url(${bgImgSrc})`,
+          }}
+        >
+          {Object.entries(jsonData[selectedCity]).map(([key, value]) => (
+            <div key={key} className="city-info__unit">
+              <div>
+                <p>
+                  {key} : {value}
+                </p>
+                {selectedCity !== "Norge"
+                  ? `Norge: ${jsonData["Norge"][key]}`
+                  : null}
+              </div>
+              <div>
+                {parseFloat(value) >= 0 ? (
+                  <BsGraphUpArrow className="up-arrow icon" />
+                ) : (
+                  <BsGraphDownArrow className="down-arrow icon" />
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default MyApp;

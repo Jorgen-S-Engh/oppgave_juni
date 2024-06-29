@@ -1,71 +1,47 @@
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300");
 
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300');
-
-
-body{
-  /* background-color: #2c3e50;
-  color: #ecf0f1; */
-  font-family: 'Comfortaa', sans-serif;
-  display:flex;
+body {
+  font-family: "Comfortaa", sans-serif;
+  display: flex;
   justify-content: center;
   margin: 0px;
 }
-.content{
+.content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
 }
-
 
 .main-content {
   display: flex;
   flex-wrap: wrap;
   gap: 25px;
-
-  
 }
-
-/* .city-container {
-  border: 1px solid gray;
-  display: flex;
-  width: 200px;
-  height: 100px;
-  justify-content: center;
-  align-items: center;
-  border-radius: 5px;
-  transition: box-shadow 0.3s ease;
-  background-color: aliceblue;
-} */
 
 .city-item:hover {
   box-shadow: 0px 0px 5px 0px rgb(202, 205, 205);
 }
 
-.city-container{
+.city-container {
   display: flex;
   gap: 10px;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-
-
 }
 
-.city-item{
+.city-item {
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: 200px;
   border: solid 1px rgb(199, 199, 199);
   padding: 10px;
   border-radius: 5px;
   cursor: pointer;
-
 }
 
-.city-info__container{
+.city-info__container {
   display: flex;
   height: auto;
   flex-wrap: wrap;
@@ -76,11 +52,10 @@ body{
   background-position: center;
   padding: 20px;
   color: white;
-  transition: background-image 0.5s ease-in-out;
-
+  transition: background-image 0.7s ease-in-out;
 }
 
-.city-info__unit{
+.city-info__unit {
   width: 300px;
   height: 100px;
   padding: 20px;
@@ -88,31 +63,21 @@ body{
   align-items: center;
   justify-content: center;
   border-radius: 5px;
-  /* box-shadow: 0px 0px 5px 0px rgb(202, 205, 205); */
   font-weight: bold;
   background-color: rgba(61, 61, 61, 0.5);
   backdrop-filter: blur(10px);
-  color: rgb(255, 255, 255); 
-
-
+  color: rgb(255, 255, 255);
 }
 
-.icon{
+.icon {
   font-size: 2rem;
   margin-left: 20px;
-
 }
 
-
-.up-arrow{
+.up-arrow {
   color: rgba(0, 226, 71, 0.8);
-
 }
 
-.down-arrow{
+.down-arrow {
   color: rgba(226, 0, 0, 0.8);
 }
-
-
-
-
