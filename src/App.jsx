@@ -97,7 +97,7 @@ function MyApp() {
                   {key} : {value}
                 </p>
                 {selectedCity !== "Norge"
-                  ? `Norge: ${jsonData["Norge"][key]}`
+                  ? `Tilsvarende tall i Norge: ${jsonData["Norge"][key]}`
                   : null}
               </div>
               <div>
